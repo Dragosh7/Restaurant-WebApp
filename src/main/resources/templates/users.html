@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head><title>User List</title></head>
+<body class="container">
+<table class="table table-stripped">
+    <thead>
+    <tr>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tr th:each="user : ${users}" th:object="${user}">
+        <td>
+            <a th:href="@{~/updateUser/{userID}(userID=${user.username()})}" th:text="${user.username}"></a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <style>
+    body {
+      position: relative;
+      padding-top: 50px; /* Adjust according to your header height */
+    }
+    .logout-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+<h2>Restaurant Application</h2>
+<ul>
+  <li><a th:href="@{/addOrder}">Create a New Order</a></li>
+  <li><a th:href="@{/newFood}">Insert a New Type of Food</a></li>
+  <li><a th:href="@{/users}">View/Update Users</a></li>
+</ul>
+<form action="/logout" method="post" class="logout-btn">
+  <button type="submit">Log Off</button>
+</form>
+</body>
+</html>

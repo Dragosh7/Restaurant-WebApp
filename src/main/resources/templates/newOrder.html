@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Order</title>
+</head>
+<body>
+<div th:if="${errorMessage}" class="alert alert-danger">
+  <p th:text="${errorMessage}"></p>
+</div>
+<h2>Add New Order</h2>
+<form action="/addOrder" method="post">
+  <label for="foods">Select Foods:</label>
+  <select name="selectedFoodIds" id="foods" multiple onchange="calculateTotal()">
+    <option th:each="food : ${foodList}" th:value="${food.id}" th:data-price="${food.price}" th:text="${food.name + ' (' + food.price + ' Lei)'}"></option>
+  </select>
+
+  <br><br>
+  <label for="totalPrice">Total Price:</label>
+  <input type="number" name="totalPrice" id="totalPrice" step="0.01" min="0" required readonly>
+  <br><br>
+  <label for="status">Status:</label>
+  <select name="status" id="status" required>
+    <option value="NEW_ORDER">NEW_ORDER</option>
+    <option value="ORDER_IN_PROCESS">ORDER_IN_PROCESS</option>
+    <option value="ORDER_FINISHED">ORDER_FINISHED</option>
+  </select>
+  <br><br>
+  <label for="date">Date:</label>
+  <input type="date" name="date" id="date" required>
+  <br><br>
+
+  <input type="hidden" id="hiddenTotalPrice" name="hiddenTotalPrice">
+  <button type="submit">Add Order</button>
+</form>
+
+<script>
+  function calculateTotal() {
+    var select = document.getElementById("foods");
+    var totalPrice = 0;
+    for (var i = 0; i < select.selectedOptions.length; i++) {
+      var foodId = select.selectedOptions[i].value;
+      var foodPrice = parseFloat(select.selectedOptions[i].getAttribute("data-price"));
+      totalPrice += foodPrice;
+    }
+    document.getElementById("totalPrice").value = totalPrice.toFixed(2);
+    document.getElementById("hiddenTotalPrice").value = totalPrice.toFixed(2);
+  }
+</script>
+</body>
+</html>

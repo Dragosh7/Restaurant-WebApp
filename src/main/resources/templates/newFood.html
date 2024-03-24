@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Food Item</title>
+</head>
+<body>
+<h2>Create New Food Item</h2>
+<form action="/newFood" method="post" >
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" required>
+  <br><br>
+  <label for="price">Price:</label>
+  <input type="number" name="price" id="price" min="0" step="0.1" required>
+  <br><br>
+  <label for="stock">Stock:</label>
+  <input type="number" name="stock" id="stock" min="0" required>
+  <br><br>
+  <button type="submit">Add Food</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Registration</title>
+  <style>
+    body {
+      background-color: #121212; /* Dark background color */
+      color: #ffffff; /* Light text color */
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #ff9800; /* Orange heading color */
+    }
+
+    form {
+      background-color: #333333; /* Dark form background color */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.1); /* White box shadow */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #555555; /* Dark input background color */
+      color: #ffffff; /* Light text color */
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="email"]:focus {
+      outline: none;
+      box-shadow: 0px 0px 5px 0px rgba(255,255,255,0.5); /* White box shadow on focus */
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff9800; /* Orange button background color */
+      color: #ffffff; /* Light text color */
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #ffab40; /* Lighter orange on hover */
+    }
+  </style>
+</head>
+<body>
+<h2>Admin Registration</h2>
+<form action="/registerAdmin" method="post">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required>
+
+  <label for="emailAddress">Email Address:</label>
+  <input type="email" id="emailAddress" name="emailAddress" class="form-control" required>
+
+  <button type="submit">Register</button>
+</form>
+</body>
+</html>

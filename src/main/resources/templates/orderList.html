@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of Orders</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .logout-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>List of Orders</h2>
+<div style="overflow-x:auto;">
+  <table>
+    <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Food Items</th>
+      <th>Total Price</th>
+      <th>Status</th>
+      <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+      <td th:text="${order.id}"></td>
+      <td>
+        <ul>
+          <li th:each="food : ${order.command}">
+            <span th:text="${food.name}"></span>
+            <span th:text="' - Price: ' + ${food.price} +'Lei'"></span>
+          </li>
+        </ul>
+      </td>
+      <td th:text="${order.totalPrice}+'Lei'"></td>
+      <td th:text="${order.status}"></td>
+      <td th:text="${#dates.format(order.date, 'dd-MM-yyyy')}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<form action="/logout" method="post" class="logout-btn">
+  <button type="submit">Log Off</button>
+</form>
+</body>
+</html>

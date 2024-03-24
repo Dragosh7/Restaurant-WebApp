@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Food List</title>
+</head>
+<body>
+<h2>Food List</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Stock</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Iterate over food items and display details in table rows -->
+  <tr th:each="food : ${foods}">
+    <td th:text="${food.name}"></td>
+    <td th:text="${food.price}"></td>
+    <td th:text="${food.stock}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
