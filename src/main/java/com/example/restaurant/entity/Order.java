@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +32,6 @@ public class Order {
     private List<Food> command = new ArrayList<>();
     private Double totalPrice;
     private String status;
-    private Date date;
+    private LocalDate date;
 
 }

@@ -45,12 +45,12 @@ public class OrderController {
             return "redirect:/addOrder";
         }
         Order order=new Order();
-        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        //Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         //System.out.println("Converted Date: " + date);
 
 
         order.setTotalPrice(totalPrice);
-        order.setDate(date);
+        order.setDate(localDate);
         order.setStatus(status);
 
         List<Food> selectedFoods = new ArrayList<>();
@@ -81,14 +81,6 @@ public class OrderController {
     @GetMapping("/ordersList")
     public String listOrders(Model model) {
         List<Order> orders = service.getOrders();
-        for (Order order : orders) {
-            System.out.println("Order ID: " + order.getId());
-            for (Food food : order.getCommand()) {
-                System.out.println("Food Name: " + food.getName());
-                System.out.println("Food Stock: " + food.getStock());
-                System.out.println("Food Price: " + food.getPrice());
-            }
-        }
         model.addAttribute("orders", orders);
         return "/orderList";
     }

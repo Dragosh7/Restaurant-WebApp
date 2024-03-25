@@ -1,5 +1,6 @@
 package com.example.restaurant.restController;
 
+import com.example.restaurant.DTO.BetweenDatesDTO;
 import com.example.restaurant.entity.Food;
 import com.example.restaurant.entity.Order;
 import com.example.restaurant.DTO.OrderDto;
@@ -8,10 +9,14 @@ import com.example.restaurant.mapper.OrderMapper;
 import com.example.restaurant.service.FoodService;
 import com.example.restaurant.service.OrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cglib.core.Local;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -83,4 +88,24 @@ public class OrderRestController {
         return service.deleteOrder(id);
 
     }
+    @GetMapping("/allOrdersDates")
+    public List<Order> getOrdersDates(
+            @RequestBody BetweenDatesDTO find) {
+        return service.getOrdersBetweenDates(find.startDate(),find.endDate());
+    }
+
+    @GetMapping("/orderOnDate")
+    public List<Order> getOrderDate(
+            @RequestBody Map<String, String> requestBody) {
+        String dateString = requestBody.get("find");
+        LocalDate findDate = LocalDate.parse(dateString);
+        return service.orderDate(findDate);
+    }
+
+    @GetMapping("/topFoods")
+    public List<Food> getTopFoods() {
+        return service.getTopFoods();
+    }
+
+
 }

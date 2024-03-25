@@ -28,7 +28,7 @@
   </select>
   <br><br>
   <label for="date">Date:</label>
-  <input type="date" name="date" id="date" required>
+  <input type="date" name="date" id="date" required th:value="${#dates.format(order.date, 'yyyy-MM-dd')}">
   <br><br>
 
   <input type="hidden" id="hiddenTotalPrice" name="hiddenTotalPrice">

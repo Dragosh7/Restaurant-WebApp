@@ -59,7 +59,7 @@
       </td>
       <td th:text="${order.totalPrice}+'Lei'"></td>
       <td th:text="${order.status}"></td>
-      <td th:text="${#dates.format(order.date, 'dd-MM-yyyy')}"></td>
+      <td th:text="${order.date}"></td>
     </tr>
     </tbody>
   </table>

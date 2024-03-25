@@ -1,11 +1,14 @@
 package com.example.restaurant.service;
 
+import com.example.restaurant.entity.Food;
 import com.example.restaurant.entity.Order;
 import com.example.restaurant.entity.Status;
 import com.example.restaurant.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -50,4 +53,15 @@ public class OrderService {
         existingOrder.setStatus(order.getStatus());
         return repository.save(existingOrder);
     }
+    public List<Order> getOrdersBetweenDates(LocalDate startDate, LocalDate endDate) {
+        return repository.findByDateBetween(startDate, endDate);
+    }
+    public List<Order> orderDate(LocalDate date) {
+        return repository.selectByDate(date);
+    }
+
+    public List<Food> getTopFoods() {
+        return repository.findMostOrderedFoods();
+    }
+
 }
